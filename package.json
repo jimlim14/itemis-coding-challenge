@@ -1,0 +1,22 @@
+{
+  "name": "itemis-coding-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimlim14/itemis-coding-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jimlim14/itemis-coding-challenge/issues"
+  },
+  "homepage": "https://github.com/jimlim14/itemis-coding-challenge#readme",
+  "devDependencies": {
+    "jest": "^29.0.3"
+  }
+}
