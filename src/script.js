@@ -9,11 +9,11 @@
 const checkItemDetails = require('./helper');
 
 function receiptDetails (itemDetails) {
-	// 1) loop through array of item details.
-	// 2) extract amount of item, item name and item price, store in variable.
-	//    - return error message if information cannot be extracted
-	// 3) if inputs are valid, then proceed to extraction.
-  checkItemDetails(itemDetails);
+  if (!checkItemDetails(itemDetails)) {
+    return 'invalid input';
+  } else {
+    
+  }
 }
 
 

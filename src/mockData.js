@@ -19,7 +19,7 @@ const input3 = [
 const invalidInput = [
   '1 book 12.49',
   'chocolate bar at 0.85',
-  '1 imported chocolate bar at'
+  '1 imported chocolate bar at',
 ]
 
 module.exports = {input1, input2, input3, invalidInput};
