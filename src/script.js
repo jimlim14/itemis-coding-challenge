@@ -6,15 +6,24 @@
 3) np/100 should round up to the nearest 0.05
 */
 
-const checkItemDetails = require('./helper');
+const {checkItemDetails, extractInformation} = require('./helper');
+
+const salesTax = 10;
+const importTax = 5;
+let imported = false;
+let receipt = '';
 
 function receiptDetails (itemDetails) {
+  // exit receiptDetails function if input is invalid, else proceed.
   if (!checkItemDetails(itemDetails)) {
     return 'invalid input';
   } else {
-    
+    for (let itemDetail of itemDetails) {
+      const itemInfo = extractInformation(itemDetail);
+      
+    }
   }
+  console.log(receipt);
 }
-
 
 module.exports = receiptDetails;
