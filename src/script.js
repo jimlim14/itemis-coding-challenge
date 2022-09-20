@@ -28,7 +28,6 @@ function receiptDetails(itemDetails) {
 				basicTax,
 				importTax
 			);
-      console.log(itemInfo);
 		}
 	}
 

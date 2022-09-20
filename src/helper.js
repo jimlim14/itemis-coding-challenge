@@ -42,19 +42,43 @@ function extractInformation(itemDetail) {
 
 function calculatePriceAndTax(itemInfo, taxItems, basicTax, importTax) {
 	// calculate price before tax by multiplying item price with the amount of item.
-	let price = itemInfo['amount'] * itemInfo['price'];
+	let priceBeforeTax = itemInfo['amount'] * itemInfo['price'];
+
+	// store import tax, basic tax etc.
 	let taxes = 0;
 
+	// store the price after adding taxes
+	let priceAfterTax = 0;
+
+	// store individual 
+	let salesTax = 0;
+
+	// add import tax if item is imported
 	if (itemInfo['name'].includes('imported')) {
 		taxes += importTax;
 	}
 
-	if (itemInfo['name'].includes(taxItems)) {
-    taxes += basicTax;
-  }
+	// add basic tax if item is in taxItems array
+	for (let ele of taxItems) {
+		if (itemInfo['name'].includes(ele)) {
+			taxes += basicTax;
+			break;
+		}
+	}
 
-	console.log(taxes);
-  return [1,2];
+	// calculate sales tax if there are taxes
+	if (taxes > 0) {
+		// round to the nearest 0.05
+		salesTax = Math.ceil((priceBeforeTax * taxes / 100) * 20) / 20;
+		priceAfterTax = (priceBeforeTax + salesTax).toFixed(2);
+	} else {
+		priceAfterTax = priceBeforeTax;
+	}
+
+	console.log('price: ', priceAfterTax);
+	console.log('tax: ', salesTax);
+
+  return [priceAfterTax, salesTax];
 }
 
 module.exports = { checkItemDetails, extractInformation, calculatePriceAndTax };
