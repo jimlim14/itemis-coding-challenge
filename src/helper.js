@@ -1,15 +1,10 @@
 function checkItemDetails(itemDetails) {
 	for (let itemDetail of itemDetails) {
-		// split individual item detail by space.
 		const splitItemDetail = itemDetail.split(' ');
-
-		// extract the very first element from splitItemDetail which is the amount of the item
 		const amount = Number(splitItemDetail[0]);
-
-		// extract the last element from splitItemDetail which is the price of the item
 		const price = Number(splitItemDetail[splitItemDetail.length - 1]);
 
-		if (!itemDetail.includes(' at ') && !itemDetail.includes(' at')) return 'missing awef';
+		if (!itemDetail.includes(' at ') && !itemDetail.includes(' at')) return 'missing "at"';
 		if (isNaN(amount)) return 'missing amount';
 		if (isNaN(price)) return 'missing price';
 	

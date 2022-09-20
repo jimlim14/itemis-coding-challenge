@@ -12,10 +12,9 @@ const {
 	input3,
 } = require('./mockData');
 
-// test individual invalid input, make it specific
 describe('Testing invalid and valid inputs', () => {
 	it('"at" is missing', () => {
-		expect(checkItemDetails(invalidInput1)).toBe('missing awef');
+		expect(checkItemDetails(invalidInput1)).toBe('missing "at"');
 	});
   it('amount is missing', () => {
 		expect(checkItemDetails(invalidInput2)).toBe('missing amount');
