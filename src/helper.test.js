@@ -95,13 +95,19 @@ describe('Extract information from individual item detail from input3', () => {
 describe('Calculate price after tax and sales tax for individual item', () => {
 	const basicTax = 10;
 	const importTax = 5;
-	const taxItems = ['music CD', 'perfume'];
-	const itemInfo = {
+	const taxItems = ['music CD', 'perfume']
+	const itemInfo1 = {
 		name: 'imported bottle of perfume',
 		amount: 1,
 		price: 27.99,
 	};
+  const itemInfo2 = {
+    name: 'book',
+    amount: 1,
+    price: 12.49
+  }
 	it('should return price after tax and sales tax in an array', () => {
-		expect(calculatePriceAndTax(itemInfo, taxItems, basicTax, importTax)).toStrictEqual([32.19, 4.2]);
+		expect(calculatePriceAndTax(itemInfo1, taxItems, basicTax, importTax)).toStrictEqual([32.19, 4.2]);
+    expect(calculatePriceAndTax(itemInfo2, taxItems, basicTax, importTax)).toStrictEqual([12.49, 0]);
 	});
 });

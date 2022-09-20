@@ -10,11 +10,7 @@ const { checkItemDetails, extractInformation, calculatePriceAndTax } = require('
 
 const basicTax = 10;
 const importTax = 5;
-const nonTaxItems = {
-	food: ['chocolate'],
-	books: ['book'],
-	medical: ['pill'],
-}
+const taxItems = ['music CD', 'perfume'];
 let receipt = '';
 let totalPriceAfterTax = 0;
 let totalSalesTax = 0;
@@ -29,7 +25,7 @@ function receiptDetails(itemDetails) {
 			const itemInfo = extractInformation(itemDetail);
 			const [priceAfterTax, salesTax] = calculatePriceAndTax(
 				itemInfo,
-				nonTaxItems,
+				taxItems,
 				basicTax,
 				importTax
 			);

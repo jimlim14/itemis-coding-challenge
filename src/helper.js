@@ -40,7 +40,7 @@ function extractInformation(itemDetail) {
 	return itemInfo;
 }
 
-function calculatePriceAndTax(itemInfo, nonTaxItems, basicTax, importTax) {
+function calculatePriceAndTax(itemInfo, taxItems, basicTax, importTax) {
 	// calculate price before tax by multiplying item price with the amount of item.
 	let priceBeforeTax = itemInfo['amount'] * itemInfo['price'];
 
@@ -58,13 +58,11 @@ function calculatePriceAndTax(itemInfo, nonTaxItems, basicTax, importTax) {
 		taxes += importTax;
 	}
 
-	// add basic tax if item is not in nonTaxItems object
-	for (let [k, v] of Object.entries(nonTaxItems)) {
-		for (let ele of v) {
-			if (!itemInfo['name'].includes(ele)) {
-				taxes += basicTax;
-				break;
-			}
+	// add basic tax if item is in taxItems array
+	for (let ele of taxItems) {
+		if (itemInfo['name'].includes(ele)) {
+			taxes += basicTax;
+			break;
 		}
 	}
 
