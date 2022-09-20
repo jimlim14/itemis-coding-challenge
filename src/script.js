@@ -11,11 +11,11 @@ const { checkItemDetails, extractInformation, calculatePriceAndTax } = require('
 const basicTax = 10;
 const importTax = 5;
 const taxItems = ['music CD', 'perfume'];
-let receipt = '';
-let totalPriceAfterTax = 0;
-let totalSalesTax = 0;
 
 function receiptDetails(itemDetails) {
+	let receipt = '';
+	let totalPriceAfterTax = 0;
+	let totalSalesTax = 0;
 	// exit receiptDetails function if input is invalid, else proceed.
 	if (!checkItemDetails(itemDetails)) {
 		return 'invalid input';
@@ -29,13 +29,14 @@ function receiptDetails(itemDetails) {
 				basicTax,
 				importTax
 			);
-			receipt += `${itemInfo['amount']} ${itemInfo['name']}: ${priceAfterTax}\n`;
+			receipt += `${itemInfo['amount']} ${itemInfo['name']}: ${priceAfterTax.toFixed(2)}\n`;
 			totalPriceAfterTax += priceAfterTax;
 			totalSalesTax += salesTax;
 		}
 		receipt += `Sales Taxes: ${totalSalesTax.toFixed(2)}\n`;
 		receipt += `Total: ${totalPriceAfterTax.toFixed(2)}`;
 	}
+	console.log(receipt);
 	return receipt;
 }
 
