@@ -4,14 +4,10 @@ const input1 = [
 	'1 chocolate bar at 0.85',
 ];
 
-
-
 const input2 = [
 	'1 imported box of chocolates at 10.00',
 	'1 imported bottle of perfume at 47.50',
 ];
-
-
 
 const input3 = [
 	'1 imported bottle of perfume at 27.99',

@@ -1,3 +1,5 @@
+// dont write function in test file, 
+
 const {
 	checkItemDetails,
 	extractInformation,
@@ -5,6 +7,7 @@ const {
 } = require('./helper');
 const { invalidInput, input1, input2, input3 } = require('./mockData');
 
+// test individual invalid input, make it specific
 describe('Testing invalid and valid inputs', () => {
 	it('should return false for invalid input', () => {
 		expect(checkItemDetails(invalidInput)).toBe(false);
@@ -20,6 +23,7 @@ describe('Testing invalid and valid inputs', () => {
 	});
 });
 
+// test one word and two words enough
 describe('Extract information from individual item detail from input1', () => {
 	it('should return an object', () => {
 		expect(extractInformation(input1[0])).toStrictEqual({
@@ -85,7 +89,7 @@ describe('Extract information from individual item detail from input3', () => {
 	});
 	it('should return an object', () => {
 		expect(extractInformation(input3[3])).toStrictEqual({
-			name: 'box of imported chocolates',
+			name: 'imported box of chocolates',
 			amount: 1,
 			price: 11.25,
 		});

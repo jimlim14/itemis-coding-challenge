@@ -6,11 +6,12 @@
 3) np/100 should round up to the nearest 0.05
 */
 
-const { checkItemDetails, extractInformation, calculatePriceAndTax } = require('./helper');
-
-const basicTax = 10;
-const importTax = 5;
-const taxItems = ['music CD', 'perfume'];
+const {
+	checkItemDetails,
+	extractInformation,
+	calculatePriceAndTax,
+} = require('./helper');
+const { BASIC_TAX, IMPORT_TAX, TAX_ITEMS } = require('./constant');
 
 function receiptDetails(itemDetails) {
 	let receipt = '';
@@ -25,11 +26,13 @@ function receiptDetails(itemDetails) {
 			const itemInfo = extractInformation(itemDetail);
 			const [priceAfterTax, salesTax] = calculatePriceAndTax(
 				itemInfo,
-				taxItems,
-				basicTax,
-				importTax
+				TAX_ITEMS,
+				BASIC_TAX,
+				IMPORT_TAX
 			);
-			receipt += `${itemInfo['amount']} ${itemInfo['name']}: ${priceAfterTax.toFixed(2)}\n`;
+			receipt += `${itemInfo['amount']} ${
+				itemInfo['name']
+			}: ${priceAfterTax.toFixed(2)}\n`;
 			totalPriceAfterTax += priceAfterTax;
 			totalSalesTax += salesTax;
 		}

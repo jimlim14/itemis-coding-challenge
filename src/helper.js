@@ -21,8 +21,12 @@ function checkItemDetails(itemDetails) {
 }
 
 function extractInformation(itemDetail) {
+	
 	// use to store information extracted from itemDetail
 	const itemInfo = {};
+	
+	// use to store item name
+	let name = '';
 
 	// split itemDetail by ' at ' and access 1 index for price
 	const price = itemDetail.split(' at ')[1];
@@ -31,7 +35,16 @@ function extractInformation(itemDetail) {
 	const temp = itemDetail.split(' at ')[0];
 	// deconstruct syntax to split the string only on the first occurrence of ' '
 	const [amount, ...rest] = temp.split(' ');
-	const name = rest.join(' ');
+
+	if (rest.includes('imported') && rest[0] !== 'imported') {
+		const fromIndex = rest.indexOf('imported');
+		const toIndex = 0;
+		const element = rest.splice(fromIndex, 1)[0];
+		rest.splice(toIndex, 0, element);
+		name = rest.join(' ');
+	} else {
+		name = rest.join(' ');
+	}
 
 	itemInfo['amount'] = Number(amount);
 	itemInfo['name'] = name;
