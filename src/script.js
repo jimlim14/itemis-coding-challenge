@@ -6,24 +6,32 @@
 3) np/100 should round up to the nearest 0.05
 */
 
-const {checkItemDetails, extractInformation} = require('./helper');
+const { checkItemDetails, extractInformation, calculatePriceAndTax } = require('./helper');
 
-const salesTax = 10;
+const basicTax = 10;
 const importTax = 5;
 let imported = false;
 let receipt = '';
+const taxItems = ['music CD', 'perfume'];
 
-function receiptDetails (itemDetails) {
-  // exit receiptDetails function if input is invalid, else proceed.
-  if (!checkItemDetails(itemDetails)) {
-    return 'invalid input';
-  } else {
-    for (let itemDetail of itemDetails) {
-      const itemInfo = extractInformation(itemDetail);
-      
-    }
-  }
-  console.log(receipt);
+function receiptDetails(itemDetails) {
+	// exit receiptDetails function if input is invalid, else proceed.
+	if (!checkItemDetails(itemDetails)) {
+		return 'invalid input';
+	} else {
+		for (let itemDetail of itemDetails) {
+			// extract information from individual itemDetail and store in an object itemInfo
+			const itemInfo = extractInformation(itemDetail);
+			const [priceAfterTax, salesTax] = calculatePriceAndTax(
+				itemInfo,
+				taxItems,
+				basicTax,
+				importTax
+			);
+      console.log(itemInfo);
+		}
+	}
+
 }
 
 module.exports = receiptDetails;

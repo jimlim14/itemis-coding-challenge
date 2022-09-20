@@ -21,23 +21,40 @@ function checkItemDetails(itemDetails) {
 }
 
 function extractInformation(itemDetail) {
-  // use to store information extracted from itemDetail
+	// use to store information extracted from itemDetail
 	const itemInfo = {};
 
-  // split itemDetail by ' at ' and access 1 index for price
-  const price = itemDetail.split(' at ')[1];
+	// split itemDetail by ' at ' and access 1 index for price
+	const price = itemDetail.split(' at ')[1];
 
-  // split itemDetail by ' at ' and access 0 index for information of amount and item name
-  const temp = itemDetail.split(' at ')[0];
-  // deconstruct syntax to split the string only on the first occurrence of ' '
-  const [amount, ...rest] = temp.split(' ');
-  const name = rest.join(' ');
+	// split itemDetail by ' at ' and access 0 index for information of amount and item name
+	const temp = itemDetail.split(' at ')[0];
+	// deconstruct syntax to split the string only on the first occurrence of ' '
+	const [amount, ...rest] = temp.split(' ');
+	const name = rest.join(' ');
 
 	itemInfo['amount'] = Number(amount);
-  itemInfo['name'] = name;
+	itemInfo['name'] = name;
 	itemInfo['price'] = Number(price);
 
 	return itemInfo;
 }
 
-module.exports = { checkItemDetails, extractInformation };
+function calculatePriceAndTax(itemInfo, taxItems, basicTax, importTax) {
+	// calculate price before tax by multiplying item price with the amount of item.
+	let price = itemInfo['amount'] * itemInfo['price'];
+	let taxes = 0;
+
+	if (itemInfo['name'].includes('imported')) {
+		taxes += importTax;
+	}
+
+	if (itemInfo['name'].includes(taxItems)) {
+    taxes += basicTax;
+  }
+
+	console.log(taxes);
+  return [1,2];
+}
+
+module.exports = { checkItemDetails, extractInformation, calculatePriceAndTax };
