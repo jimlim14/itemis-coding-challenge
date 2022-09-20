@@ -12,6 +12,8 @@ const basicTax = 10;
 const importTax = 5;
 let imported = false;
 let receipt = '';
+let totalPriceAfterTax = 0;
+let totalSalesTax = 0;
 const taxItems = ['music CD', 'perfume'];
 
 function receiptDetails(itemDetails) {
@@ -28,9 +30,15 @@ function receiptDetails(itemDetails) {
 				basicTax,
 				importTax
 			);
+			receipt += `${itemInfo['amount']} ${itemInfo['name']} ${itemInfo['name']}: ${priceAfterTax}\n`;
+			totalPriceAfterTax += priceAfterTax;
+			totalSalesTax += salesTax;
+			// console.log(totalPriceAfterTax);
 		}
+		receipt += `Sales Taxes: ${totalSalesTax.toFixed(2)}\n`;
+		receipt += `Total: ${totalPriceAfterTax.toFixed(2)}`;
 	}
-
+	console.log(receipt);
 }
 
 module.exports = receiptDetails;

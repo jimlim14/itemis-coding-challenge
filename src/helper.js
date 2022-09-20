@@ -70,13 +70,12 @@ function calculatePriceAndTax(itemInfo, taxItems, basicTax, importTax) {
 	if (taxes > 0) {
 		// round to the nearest 0.05
 		salesTax = Math.ceil((priceBeforeTax * taxes / 100) * 20) / 20;
-		priceAfterTax = (priceBeforeTax + salesTax).toFixed(2);
+
+		// toFixed() will turn it to string, so use Number again to turn it back to number
+		priceAfterTax = Number((priceBeforeTax + salesTax).toFixed(2));
 	} else {
 		priceAfterTax = priceBeforeTax;
 	}
-
-	console.log('price: ', priceAfterTax);
-	console.log('tax: ', salesTax);
 
   return [priceAfterTax, salesTax];
 }
