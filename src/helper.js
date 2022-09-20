@@ -9,13 +9,10 @@ function checkItemDetails(itemDetails) {
 		// extract the last element from splitItemDetail which is the price of the item
 		const price = Number(splitItemDetail[splitItemDetail.length - 1]);
 
-		// check whether each individual item detail is valid
-		// 1) whether it contains 'at'
-		// 2) whether the amount is there or not
-		// 3) whether the price is there or not
-		if (!itemDetail.includes(' at ') || amount === NaN || price === NaN) {
-			return false;
-		}
+		if (!itemDetail.includes(' at ') && !itemDetail.includes(' at')) return 'missing awef';
+		if (isNaN(amount)) return 'missing amount';
+		if (isNaN(price)) return 'missing price';
+	
 		return true;
 	}
 }

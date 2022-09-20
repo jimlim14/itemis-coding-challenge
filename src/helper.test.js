@@ -1,16 +1,27 @@
-// dont write function in test file, 
-
 const {
 	checkItemDetails,
 	extractInformation,
 	calculatePriceAndTax,
 } = require('./helper');
-const { invalidInput, input1, input2, input3 } = require('./mockData');
+const {
+	invalidInput1,
+	invalidInput2,
+	invalidInput3,
+	input1,
+	input2,
+	input3,
+} = require('./mockData');
 
 // test individual invalid input, make it specific
 describe('Testing invalid and valid inputs', () => {
-	it('should return false for invalid input', () => {
-		expect(checkItemDetails(invalidInput)).toBe(false);
+	it('"at" is missing', () => {
+		expect(checkItemDetails(invalidInput1)).toBe('missing awef');
+	});
+  it('amount is missing', () => {
+		expect(checkItemDetails(invalidInput2)).toBe('missing amount');
+	});
+  it('price is missing', () => {
+		expect(checkItemDetails(invalidInput3)).toBe('missing price');
 	});
 	it('should return true for valid input1', () => {
 		expect(checkItemDetails(input1)).toBe(true);
@@ -99,19 +110,23 @@ describe('Extract information from individual item detail from input3', () => {
 describe('Calculate price after tax and sales tax for individual item', () => {
 	const basicTax = 10;
 	const importTax = 5;
-	const taxItems = ['music CD', 'perfume']
+	const taxItems = ['music CD', 'perfume'];
 	const itemInfo1 = {
 		name: 'imported bottle of perfume',
 		amount: 1,
 		price: 27.99,
 	};
-  const itemInfo2 = {
-    name: 'book',
-    amount: 1,
-    price: 12.49
-  }
+	const itemInfo2 = {
+		name: 'book',
+		amount: 1,
+		price: 12.49,
+	};
 	it('should return price after tax and sales tax in an array', () => {
-		expect(calculatePriceAndTax(itemInfo1, taxItems, basicTax, importTax)).toStrictEqual([32.19, 4.2]);
-    expect(calculatePriceAndTax(itemInfo2, taxItems, basicTax, importTax)).toStrictEqual([12.49, 0]);
+		expect(
+			calculatePriceAndTax(itemInfo1, taxItems, basicTax, importTax)
+		).toStrictEqual([32.19, 4.2]);
+		expect(
+			calculatePriceAndTax(itemInfo2, taxItems, basicTax, importTax)
+		).toStrictEqual([12.49, 0]);
 	});
 });

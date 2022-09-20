@@ -18,8 +18,8 @@ function receiptDetails(itemDetails) {
 	let totalPriceAfterTax = 0;
 	let totalSalesTax = 0;
 	// exit receiptDetails function if input is invalid, else proceed.
-	if (!checkItemDetails(itemDetails)) {
-		return 'invalid input';
+	if (checkItemDetails(itemDetails) !== true) {
+		return 0;
 	} else {
 		for (let itemDetail of itemDetails) {
 			// extract information from individual itemDetail and store in an object itemInfo
@@ -39,7 +39,6 @@ function receiptDetails(itemDetails) {
 		receipt += `Sales Taxes: ${totalSalesTax.toFixed(2)}\n`;
 		receipt += `Total: ${totalPriceAfterTax.toFixed(2)}`;
 	}
-	console.log(receipt);
 	return receipt;
 }
 

@@ -25,10 +25,18 @@ const output2 =
 const output3 =
 	'1 imported bottle of perfume: 32.19\n1 bottle of perfume: 20.89\n1 packet of headache pills: 9.75\n1 imported box of chocolates: 11.85\nSales Taxes: 6.70\nTotal: 74.68';
 
-const invalidInput = [
-	'1 book 12.49',
-	'chocolate bar at 0.85',
-	'1 imported chocolate bar at',
-];
+const invalidInput1 = ['1 book 12.49'];
+const invalidInput2 = ['chocolate bar at 0.85'];
+const invalidInput3 = ['1 imported chocolate bar at'];
 
-module.exports = { input1, input2, input3, invalidInput, output1, output2, output3 };
+module.exports = {
+	input1,
+	input2,
+	input3,
+	invalidInput1,
+	invalidInput2,
+	invalidInput3,
+	output1,
+	output2,
+	output3,
+};
