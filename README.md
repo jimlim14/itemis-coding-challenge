@@ -89,7 +89,7 @@ Ex. 1 imported box of chocolate at 10.00.<br>
 5) Anything that does not fall under the tax category will not have 10% basic tax.
 
 6) Based on the inputs, no matter where the position of the word ***imported*** is, it should be moved to the beginning of the item name when it comes to output. And the word ***at*** should be replaced by colon<br><br>
-Ex. 1 box of imported chocolate at 11.25<br>
--> it should result to an output of '1 imported box of chocolate: 11.5'
+Ex. 1 box of imported chocolate at 11.25<br><br>
+it should result to an output of '1 imported box of chocolate: 11.50'.
 
 
