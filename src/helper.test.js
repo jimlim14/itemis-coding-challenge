@@ -34,70 +34,29 @@ describe('Testing invalid and valid inputs', () => {
 });
 
 // test one word and two words enough
-describe('Extract information from individual item detail from input1', () => {
-	it('should return an object', () => {
+describe('Extract information from individual item detail', () => {
+	it('should extract name with 1 word', () => {
 		expect(extractInformation(input1[0])).toStrictEqual({
 			name: 'book',
 			amount: 1,
 			price: 12.49,
 		});
 	});
-	it('should return an object', () => {
+	it('should extract name with 2 word', () => {
 		expect(extractInformation(input1[1])).toStrictEqual({
 			name: 'music CD',
 			amount: 1,
 			price: 14.99,
 		});
 	});
-	it('should return an object', () => {
-		expect(extractInformation(input1[2])).toStrictEqual({
-			name: 'chocolate bar',
-			amount: 1,
-			price: 0.85,
-		});
-	});
-});
-
-describe('Extract information from individual item detail from input2', () => {
-	it('should return an object', () => {
+  it('should extract name with 4 word', () => {
 		expect(extractInformation(input2[0])).toStrictEqual({
 			name: 'imported box of chocolates',
 			amount: 1,
 			price: 10.0,
 		});
 	});
-	it('should return an object', () => {
-		expect(extractInformation(input2[1])).toStrictEqual({
-			name: 'imported bottle of perfume',
-			amount: 1,
-			price: 47.5,
-		});
-	});
-});
-
-describe('Extract information from individual item detail from input3', () => {
-	it('should return an object', () => {
-		expect(extractInformation(input3[0])).toStrictEqual({
-			name: 'imported bottle of perfume',
-			amount: 1,
-			price: 27.99,
-		});
-	});
-	it('should return an object', () => {
-		expect(extractInformation(input3[1])).toStrictEqual({
-			name: 'bottle of perfume',
-			amount: 1,
-			price: 18.99,
-		});
-	});
-	it('should return an object', () => {
-		expect(extractInformation(input3[2])).toStrictEqual({
-			name: 'packet of headache pills',
-			amount: 1,
-			price: 9.75,
-		});
-	});
-	it('should return an object', () => {
+  it('should extract name with 4 word', () => {
 		expect(extractInformation(input3[3])).toStrictEqual({
 			name: 'imported box of chocolates',
 			amount: 1,
