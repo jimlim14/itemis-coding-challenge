@@ -34,7 +34,6 @@ describe('Testing invalid and valid inputs', () => {
 	});
 });
 
-// test one word and two words enough
 describe('Extract information from individual item detail', () => {
 	it('should extract name with 1 word', () => {
 		expect(extractInformation(input1[0])).toStrictEqual({
@@ -91,6 +90,7 @@ describe('Calculate price after tax and sales tax for individual item', () => {
     amount: 1,
     price: 10
   }
+
 	it('should calculate both basic and import tax', () => {
 		expect(
 			calculatePriceAndTax(itemInfo1, TAX_ITEMS, BASIC_TAX, IMPORT_TAX)

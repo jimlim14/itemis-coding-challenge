@@ -12,6 +12,7 @@ const {
 	calculatePriceAndTax,
 } = require('./helper');
 const { BASIC_TAX, IMPORT_TAX, TAX_ITEMS } = require('./constant');
+const { inputs } = require('./mockData');
 
 function receiptDetails(itemDetails) {
 	let receipt = '';
@@ -41,5 +42,10 @@ function receiptDetails(itemDetails) {
 	}
 	return receipt;
 }
+
+inputs.forEach((input, i) => {
+	console.log(`Output ${i+1}`)
+	console.log(receiptDetails(input) + '\n');
+})
 
 module.exports = receiptDetails;

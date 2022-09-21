@@ -16,6 +16,8 @@ const input3 = [
 	'1 box of imported chocolates at 11.25',
 ];
 
+const inputs = [input1, input2, input3];
+
 const output1 =
 	'1 book: 12.49\n1 music CD: 16.49\n1 chocolate bar: 0.85\nSales Taxes: 1.50\nTotal: 29.83';
 
@@ -30,6 +32,7 @@ const invalidInput2 = ['chocolate bar at 0.85'];
 const invalidInput3 = ['1 imported chocolate bar at'];
 
 module.exports = {
+	inputs,
 	input1,
 	input2,
 	input3,
