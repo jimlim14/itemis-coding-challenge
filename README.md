@@ -47,9 +47,11 @@ Total: 74.68<br>
 
 ### GETTING STARTED
 
-First, install the dependencies:
+First, clone this repository, cd to project's directory and install the dependencies either by npm or yarn:
 
 ```bash
+git clone https://github.com/jimlim14/itemis-coding-challenge.git
+cd itemis-coding-challenge
 npm install
 or
 yarn install
