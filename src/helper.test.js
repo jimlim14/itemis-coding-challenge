@@ -11,6 +11,7 @@ const {
 	input2,
 	input3,
 } = require('./mockData');
+const { BASIC_TAX, IMPORT_TAX, TAX_ITEMS } = require('./constant');
 
 describe('Testing invalid and valid inputs', () => {
 	it('"at" is missing', () => {
@@ -66,25 +67,48 @@ describe('Extract information from individual item detail', () => {
 });
 
 describe('Calculate price after tax and sales tax for individual item', () => {
-	const basicTax = 10;
-	const importTax = 5;
-	const taxItems = ['music CD', 'perfume'];
+  // tax = 10 + 5
 	const itemInfo1 = {
 		name: 'imported bottle of perfume',
 		amount: 1,
 		price: 27.99,
 	};
+  // tax = 0
 	const itemInfo2 = {
 		name: 'book',
 		amount: 1,
 		price: 12.49,
 	};
-	it('should return price after tax and sales tax in an array', () => {
+  // tax = 10
+  const itemInfo3 = {
+		name: 'music CD',
+		amount: 1,
+		price: 14.99,
+	};
+  // tax = 5
+  const itemInfo4 = {
+    name: 'imported box of chocolate',
+    amount: 1,
+    price: 10
+  }
+	it('should calculate both basic and import tax', () => {
 		expect(
-			calculatePriceAndTax(itemInfo1, taxItems, basicTax, importTax)
+			calculatePriceAndTax(itemInfo1, TAX_ITEMS, BASIC_TAX, IMPORT_TAX)
 		).toStrictEqual([32.19, 4.2]);
-		expect(
-			calculatePriceAndTax(itemInfo2, taxItems, basicTax, importTax)
-		).toStrictEqual([12.49, 0]);
 	});
+  it('should calculate without tax', () => {
+    expect(
+      calculatePriceAndTax(itemInfo2, TAX_ITEMS, BASIC_TAX, IMPORT_TAX)
+    ).toStrictEqual([12.49, 0]);
+  })
+  it('should calculate with basic tax only', () => {
+    expect(
+      calculatePriceAndTax(itemInfo3, TAX_ITEMS, BASIC_TAX, IMPORT_TAX)
+    ).toStrictEqual([16.49, 1.5]);
+  })
+  it('should calculate with import tax only', () => {
+    expect(
+      calculatePriceAndTax(itemInfo4, TAX_ITEMS, BASIC_TAX, IMPORT_TAX)
+    ).toStrictEqual([10.5, 0.5]);
+  })
 });
